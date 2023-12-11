@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import { Header } from "./Header";
 import { Home } from "./Home";
 import { Movies } from "./Movies";
@@ -17,6 +17,7 @@ function App() {
       <Header />
 
       <Routes>
+        <Route path="/" element={<Navigate replace to="/home" />} />
         <Route path="/home" element={<Home />} />
         <Route path="/movies" element={<Movies />} />
         <Route path="/about" element={<About />} />
