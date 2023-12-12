@@ -5,12 +5,16 @@ import { Movies } from "./Movies";
 import { About } from "./About";
 import { ContactForm } from "./Contact";
 import { Footer } from "./Footer";
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 
 function App() {
   const TRACKING_ID = "G-ZPK1ZY28GR"; // OUR_TRACKING_ID
   ReactGA.initialize(TRACKING_ID);
-  ReactGA.pageview(window.location.pathname + window.location.search);
+  ReactGA.send({
+    hitType: "pageview",
+    page: window.location.pathname,
+    title: "Custom Title",
+  });
 
   return (
     <div>
