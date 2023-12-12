@@ -2,8 +2,9 @@ import instagram from "./Images/instagram.png";
 import wapp from "./Images/social.png";
 import facebook from "./Images/facebook.png";
 import { Typography } from "@mui/material";
+import { COLORS } from "./Header";
 
-export function Footer() {
+export function Footer({ isDarkMode }) {
   return (
     <div
       style={{
@@ -16,10 +17,12 @@ export function Footer() {
         alignItems: "center",
         padding: 20,
         position: "sticky",
-        backgroundColor: "#31304D",
+        backgroundColor: !isDarkMode ? "#e6e4e0" : COLORS.ligtherDarkBg,
       }}
     >
-      <Typography color={"white"}>Reach us on social media:</Typography>
+      <Typography color={!isDarkMode ? COLORS.ligtherDarkBg : "#F0ECE5"}>
+        Reach us on social media:
+      </Typography>
       <img
         src={instagram}
         style={{ height: 30, width: 30, cursor: "pointer" }}

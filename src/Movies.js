@@ -9,6 +9,7 @@ import theMercenary from "./Images/themercenary.jpeg";
 import nomansland from "./Images/nomansland.jpeg";
 import moneyPlane from "./Images/moneyplane.jpeg";
 import { useState } from "react";
+import { COLORS } from "./Header";
 
 const movies = [
   { url: armyOfThieves, name: "armyofthieves" },
@@ -21,7 +22,7 @@ const movies = [
   { url: moneyPlane, name: "moneyplane" },
 ];
 
-export function Movies() {
+export function Movies({ isDarkMode }) {
   const [inputValue, setInputValue] = useState("");
   // const [filteredCars, setFilteredCars] = useState(cass);
   const [filtered, setFiltered] = useState(false);
@@ -31,7 +32,7 @@ export function Movies() {
       sx={{
         minHeight: "90vh",
         width: "100vw",
-        backgroundColor: "#31304D",
+        backgroundColor: !isDarkMode ? "#e6e4e0" : COLORS.ligtherDarkBg,
         boxSizing: "border-box",
         pt: "10vh",
       }}
@@ -40,7 +41,7 @@ export function Movies() {
         sx={{
           width: "100%",
           display: "flex",
-          backgroundColor: "#31304D",
+          backgroundColor: !isDarkMode ? "#e6e4e0" : COLORS.ligtherDarkBg,
           justifyContent: "center",
           padding: 2,
           position: "fixed",
@@ -55,13 +56,13 @@ export function Movies() {
           label="Search"
           variant="outlined"
           sx={{
-            input: { color: "white" },
-            label: { color: "white" },
+            input: { color: !isDarkMode ? COLORS.ligtherDarkBg : "#F0ECE5" },
+            label: { color: !isDarkMode ? COLORS.ligtherDarkBg : "#F0ECE5" },
             "& .MuiOutlinedInput-notchedOutline": {
-              borderColor: "white",
+              borderColor: !isDarkMode ? COLORS.ligtherDarkBg : "#F0ECE5",
             },
             "& .MuiOutlinedInput-notchedOutline:focus": {
-              borderColor: "white",
+              borderColor: !isDarkMode ? COLORS.ligtherDarkBg : "#F0ECE5",
             },
           }}
         />

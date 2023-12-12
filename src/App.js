@@ -1,4 +1,5 @@
-import { Route, Routes, Navigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Route, Routes, Navigate, useSearchParams } from "react-router-dom";
 import { Header } from "./Header";
 import { Home } from "./Home";
 import { Movies } from "./Movies";
@@ -15,19 +16,31 @@ function App() {
     page: window.location.pathname,
     title: "Custom Title",
   });
+  const [isDarkMode, setIsDarkMode] = React.useState(true);
+  let [searchParams, setSearchParams] = useSearchParams();
+
+  useEffect(() => {
+    setSearchParams({ isDarkMode });
+  }, [isDarkMode]);
 
   return (
     <div>
-      <Header />
+      <Header
+        isDarkMode={isDarkMode}
+        setDarkMode={() => setIsDarkMode(!isDarkMode)}
+      />
 
       <Routes>
         <Route path="/" element={<Navigate replace to="/home" />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/movies" element={<Movies />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<ContactForm />} />
+        <Route path="/home" element={<Home isDarkMode={isDarkMode} />} />
+        <Route path="/movies" element={<Movies isDarkMode={isDarkMode} />} />
+        <Route path="/about" element={<About isDarkMode={isDarkMode} />} />
+        <Route
+          path="/contact"
+          element={<ContactForm isDarkMode={isDarkMode} />}
+        />
       </Routes>
-      <Footer />
+      <Footer isDarkMode={isDarkMode}/>
     </div>
   );
 }

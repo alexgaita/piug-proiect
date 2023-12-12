@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Box, TextField, Button } from "@mui/material";
 import ReactGA from "react-ga";
+import { COLORS } from "./Header";
 
-export const ContactForm = () => {
+export const ContactForm = ({ isDarkMode }) => {
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [message, setMessage] = useState("");
@@ -52,7 +53,7 @@ export const ContactForm = () => {
       sx={{
         minHeight: "90vh",
         width: "100vw",
-        backgroundColor: "#31304D",
+        backgroundColor: !isDarkMode ? "#e6e4e0" : COLORS.ligtherDarkBg,
         boxSizing: "border-box",
         justifyContent: "center",
         padding: 5,
