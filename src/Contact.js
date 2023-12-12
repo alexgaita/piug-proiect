@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Box, TextField, Button } from "@mui/material";
+import ReactGA from "react-ga";
 
 export const ContactForm = () => {
   const [email, setEmail] = useState("");
@@ -29,6 +30,12 @@ export const ContactForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    const TRACKING_ID = "G-ZPK1ZY28GR"; // OUR_TRACKING_ID
+    ReactGA.initialize(TRACKING_ID);
+    ReactGA.event({
+      category: "User",
+      action: "Contacted Us",
+    });
 
     if (!emailError && !phoneNumberError) {
       // Add your logic for handling the submitted data here
